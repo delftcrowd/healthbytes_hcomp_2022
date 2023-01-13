@@ -1,124 +1,59 @@
-# Kappa's GitHub Guidelines
+# HealthBytes - Gesture Inputs for Crowdsourced Microtasks
 
-- [Kappa's GitHub Guidelines](#kappas-github-guidelines)
-- [Guidelines](#guidelines)
-  - [Naming Convention](#naming-convention)
-  - [Basic Information [Students only]](#basic-information-students-only)
-  - [Introduction](#introduction)
-  - [Research Summary](#research-summary)
-  - [Keywords](#keywords)
-  - [Data](#data)
-  - [Dependencies](#dependencies)
-  - [Installation & Usage](#installation--usage)
-  - [License](#license)
-- [Internal structure of repositories](#internal-structure-of-repositories)
-  - [Code](#code)
-  - [Student Project Report](#student-project-report)
-- [README Template](#readme-template)
-- [Tips for newcomers](#tips-for-newcomers)
-  - [Reference](#reference)
-  - [Editors](#editors)
+# Introduction
+This is the client side repository for the web application used in the 2022 Human Computation Conference paper [*"Gesticulate for Health's Sake! Understanding the Trade-offs of Gestures as an Input Modality for Microtask Crowdsourcing"*](https://doi.org/10.1609/hcomp.v10i1.21984).
 
-This is a simple set of guidelines for all repositories belonging to Kappa @ WIS. Whilst these guidelines are only meant to get you started with your documentation, try to stick to them.
+# Research Summary
+Human input is pivotal in building reliable and robust artificial intelligence systems. By providing a means to gather diverse, high-quality, representative, and cost-effective human input on demand, microtask crowdsourcing marketplaces have thrived. Despite the unmistakable benefits available from online crowd work, the lack of health provisions and safeguards, along with existing work practices threatens the sustainability of this paradigm. Prior work has investigated worker engagement and mental health, yet no such investigations into the effects of crowd work on the physical health of workers have been undertaken. Crowd workers complete their work in various sub-optimal work environments, often using a conventional input modality of a mouse and keyboard. The repetitive nature of microtask crowdsourcing can lead to stress-related injuries, such as the well-documented carpal tunnel syndrome. It is known that stretching exercises can help reduce injuries and discomfort in office workers. *Gestures*, the act of using the body intentionally to affect the behavior of an intelligent system, can serve as both stretches and an alternative form of input for microtasks. To better understand the usefulness of the dual-purpose input modality of ergonomically-informed gestures across different crowdsourced microtasks, we carried out a controlled 2 x 3 between-subjects study (*N=294*). Considering the potential benefits of gestures as an input modality, our results suggest a real trade-off between worker accuracy in exchange for potential short to long-term health benefits.
 
-It is important that by the end of a given project, the relevant and necessary sections are included and detailed in **README** files.
+If you wish to read the paper in full, you can find it [here](https://doi.org/10.1609/hcomp.v10i1.21984).
 
-The goal is to indirectly create a coherent navigation flow across the different research projects that are - and will be - stored here.
+# Keywords
+Crowdsourcing, Input Modality, Microtasks, Ergonomics, Worker Health
 
-# Guidelines
+# Data
+The data collected during this project, and the surveys used, can be found on the Open Science Framework [here](https://osf.io/7x526/).
 
-## Naming Convention
+# Dependencies
 
-- use lower case
-- use underscores to separate tokens
-- if related to a larger project, start with the name of this project, followed by the name of your project (e.g. 'seca_image_classification')
+This project uses ```yarn``` to handle package installations. The version dependencies are tracked in the [package.json file](https://github.com/delftcrowd/healthbytes_hcomp_2022/tree/main/code/src/package.json).
 
-**Students**: in case of doubt ask your supervisors.
+# Installation & Usage
 
-## Basic Information [Students only]
-
-- Name of student
-- Names of supervisors
-- Academic year
-
-For non-student project this section can be omitted.
-
-## Introduction
-Brief introduction of the project.
-
-## Research Summary
-Short summary of the problem, your approach, your implementation, and results.
-
-## Keywords
-These are some key words or concepts related to the project (3 or 4 max).
-
-## Data
-In order to never face GitHub's size quotas, any data pertaining to the project should be hosted outside of the repository and linked in the README.
-
-## Dependencies
-You should always try to keep track of the dependencies of your project (e.g., Python packages) and their versions. That way anyone can re-create your development environment and reproduce your experiments.
-
-Make sure to mention whether or not you used technologies like Docker, the required API keys for external services (if needed), the configuration files, and to provide Python's ```requirements``` file or the equivalent in other programming languages.
-
-## Installation & Usage
-You should provide instructions as to how to install and use your implementation.
-
-## License
-*We encourage you to use an open license and by default the repository contains an Apache License 2.0.*
-
-# Internal structure of repositories
-
-The simplest structure for the repository would be like the following
+To install all the package dependencies, navigate to the top level directory of the project (```/healthbytes_hcomp_2022```) and use the following command:
 
 ```
-name_of_the_project
-│  README.md   
-│
-└──code
-│  │
-│  └── ...
-│   
-└──report
-   │
-   └── ...
+yarn install
 ```
 
-where the two main folders are:
+### Start dev server
 
-| Folder       | Contents                     |
-|--------------|------------------------------|
-| ```code```   | your code and resources      |
-| ```report``` | your report and presentations|
+To start the developement server to get a live look at the project, run the following command:
 
-You can of course freely add other folders as you see fit. Make sure to properly name those and mention them in the README.
+```
+yarn start:dev
+```
 
-## Code
-Please make a conscious effort in documenting your code (e.g., via comments).
+## Front End Code
 
+[comment]: <> (Use public repo link here once it is uploaded.)
+The server side implementation for this web application can be found in the [healthbytes_server_hcomp_2022 repository](https://github.com/delftcrowd/healthbytes_server_hcomp_2022).
 
-## Student Project Report
-Please consider using the official TU Delft Latex Report template [available here](https://d2k0ddhflgrk1i.cloudfront.net/Websections/TU%20Delft%20Huisstijl/report_style.zip).
+# Citation
 
-# README Template
+If you use any portion of this repository in your academic work, please include the following citation.
 
-In this repo you can find a [template](template.md) for the README file to be used in your repo are expected to change over time so be sure to check back every once in a while to see if there's something useful to include in your documentation.
+```
+@inproceedings{allen2022gesticulate,
+  title={Gesticulate for Health’s Sake! Understanding the Use of Gestures as an Input Modality for Microtask Crowdsourcing},
+  author={Allen, Garrett and Hu, Andrea and Gadiraju, Ujwal},
+  booktitle={Proceedings of the AAAI Conference on Human Computation and Crowdsourcing},
+  volume={10},
+  number={1},
+  pages={14--26},
+  year={2022}
+}
+```
 
-The template will be kept up-to-date with changes in the guidelines.
-
-# Tips for newcomers
-
-## Reference
-
-README files are written in Markdown and you should get some familiarity with its syntax. You can use [this website](https://www.markdownguide.org) as reference.
-
-## Editors
-
-Here's some free Markdown editors you can use to write and preview Markdown files.
-
-| Platform | Editor                                                   |                |
-|----------|----------------------------------------------------------|----------------|
-| Cross    | [VS Code](https://code.visualstudio.com) + [*Markdown All In One*](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)     | **Recommended**|
-| Windows  | [Ghostwriter](https://wereturtle.github.io/ghostwriter/) |                |
-| macOS    | [Typewriter](https://eightysix.github.io)                |                |
-| Linux    | [Ghostwriter](https://wereturtle.github.io/ghostwriter/) |                |
-| Web      | Directly on GitHub                                       |                |
+# License
+This project is licensed under the terms of the [Apache-2.0 license](LICENSE).
