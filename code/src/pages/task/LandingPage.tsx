@@ -13,6 +13,8 @@ const LineBreak = ({ height = '0.8em' }: { height?: string }) => {
 export const LandingPage = () => {
   const taskType = useAppSelector((state: RootState) => state.task.taskType)
   const inputModality = useAppSelector((state: RootState) => state.task.inputModality)
+  const purpose = useAppSelector((state: RootState) => state.task.purpose)
+  console.debug('LandingPage', purpose)
   const [checked, setChecked] = useState(false)
 
   const handleSubmit: FormEventHandler = event => {

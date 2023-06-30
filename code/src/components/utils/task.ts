@@ -19,7 +19,7 @@ export const startTask = (tasktype: TaskType) => {
     })
       .then(data => {
         if (data.data) {
-          console.debug(data.data)
+          console.debug('start', data.data)
           dispatch(setTask(data.data))
         }
       })
@@ -39,7 +39,7 @@ export const getTask = () => {
       }
     }).then(data => {
       if (data.data) {
-        console.debug(data.data)
+        console.debug('progress', data.data)
         dispatch(setTask(data.data))
       }
     })
@@ -60,7 +60,7 @@ export const loadQuestion = () => {
     })
       .then(data => {
         if (data.data) {
-          console.debug(data.data)
+          console.debug('question', data.data)
           dispatch(setQuestion(data.data))
         }
       })

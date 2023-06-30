@@ -1,5 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
+export const purposes = ['switching', 'hcomp'] as const
+export type Purpose = typeof purposes[number]
+
 export const taskTypes = ['bird', 'movie', 'person'] as const
 export type TaskType = typeof taskTypes[number]
 
@@ -8,6 +11,7 @@ export type InputModality = typeof inputModalities[number]
 export interface Task {
   taskType?: TaskType
   inputModality?: InputModality
+  purpose?: Purpose
   user: string
   questionNumber: number
   complete: boolean
@@ -23,6 +27,7 @@ const initialState: Task = {
   complete: false,
   questionNumber: 0,
   state: '',
+  purpose: undefined,
   taskType: undefined,
   inputModality: undefined,
   user: ''
@@ -38,7 +43,9 @@ export const taskProgress = createSlice({
       state.state = action.payload.state
       state.taskType = action.payload.taskType
       state.inputModality = action.payload.inputModality
+      state.purpose = action.payload.purpose
       state.user = action.payload.user
+      console.debug('setTask', state.purpose)
     }
   },
 })

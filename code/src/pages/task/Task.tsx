@@ -28,11 +28,14 @@ import { RootState } from 'store/store'
 
 export default function TaskPage() {
   const taskState = useAppSelector((state: RootState) => state.task.state)
+  const visitPurpose = useAppSelector((state: RootState) => state.task.purpose)
   const taskType = useAppSelector((state: RootState) => state.task.taskType)
   const inputModality = useAppSelector((state: RootState) => state.task.inputModality)
   const isConsentRevoked = useAppSelector((state: RootState) => state.consent.isRevoked)
   const dispatch = useAppDispatch()
   const stage: Stages = (taskState as unknown) as Stages
+
+  console.debug('TaskPage start', visitPurpose)
 
   function renderTutorial() {
     switch (taskType) {
@@ -60,15 +63,24 @@ export default function TaskPage() {
     if (isConsentRevoked) {
       return <ConsentRevokedScreen />
     }
+    console.debug('renderPage', visitPurpose)
 
-    switch (inputModality) {
-      case 'gesture':
-        return renderGesturePage()
-      case 'normal':
-        return renderNormalPage()
+    switch (visitPurpose) {
+      case 'hcomp':
+        switch (inputModality) {
+          case 'gesture':
+            return renderGesturePage()
+          case 'normal':
+            return renderNormalPage()
+          default:
+            return 'Loading... Refresh if takes too long'
+        }
+      case 'switching':
+        return 'You have correctly entered the switch case'
       default:
         return 'Loading... Refresh if takes too long'
     }
+    
   }
 
   function renderNormalPage() {
@@ -77,20 +89,24 @@ export default function TaskPage() {
         return <LandingPage />
       case Stages.entryQuestionnaire:
         return <EntryQuestionnaire />
+        // TODO Expand tutorial to include clearer instructions and more questions to answer
       case Stages.tutorial:
         return renderTutorialNormal()
       case Stages.task:
         return <div>task</div> // this should not render
+        // TODO Device this as a task sequence with optional second instance (plus decision page) rather than a single task
       case Stages.taskBird:
         return <TaskBirdNormal />
       case Stages.taskMovie:
         return <TaskMovieNormal />
+        // TODO Hide the pathway to these for this task run
       case Stages.taskMidname:
         return <TaskPersonNormal taskType='midname' />
       case Stages.taskProfession:
         return <TaskPersonNormal taskType='profession' />
       case Stages.taskEnd:
         return <CenterPage>All tasks completed. Please proceed to the next step. <NextButton buttonText="Next" /></CenterPage>
+        // Update exit questionnaire to new measures and versions of questions (TLX, UES, etc)
       case Stages.exitQuestionnaire:
         return <ExitQuestionnaire />
       case Stages.end:

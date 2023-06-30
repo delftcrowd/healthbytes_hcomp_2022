@@ -9,7 +9,7 @@ export const MyRouter = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/prolific/:taskType/:modality"><ProlificEntry /></Route>
+        <Route path="/prolific/:purpose/:taskType/:modality"><ProlificEntry /></Route>
         <PrivateRoute exact path='/task'> <TaskPage /></PrivateRoute>
       </Switch>
     </BrowserRouter >
