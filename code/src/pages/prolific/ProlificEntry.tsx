@@ -20,7 +20,6 @@ function isValidModality(inputModality: string): boolean {
 const ProlificEntry = () => {
   const dispatch = useAppDispatch()
   let { purpose, taskType, modality } = useParams<{ purpose: Purpose, taskType: TaskType, modality: InputModality }>()
-  console.debug('entry', purpose)
   const isPurposeValid = isValidPurpose(purpose)
   const isTaskValid = isValidTask(taskType)
   const isModalityValid = isValidModality(modality)
@@ -31,13 +30,24 @@ const ProlificEntry = () => {
     // This clears previous jwt tokens, it is for testing purposes.
     localStorage.clear()
     const pid = query.get("PROLIFIC_PID")
-
-    if (pid !== null && pid !== undefined && isPurposeValid && isTaskValid && isModalityValid) {
-      // taskTypeRef.current = taskType
-
-      dispatch(authLogin(pid, purpose, taskType, modality)).then(() => {
-        history.replace('/task')
-      })
+    const condition = query.get("condition")
+    
+    if (isPurposeValid && purpose === "hcomp") {
+      // Handle the HCOMP purpose
+      if (pid !== null && pid !== undefined && isTaskValid && isModalityValid) {
+        
+        dispatch(authLogin(pid, purpose, taskType, modality)).then(() => {
+          history.replace('/task')
+        })
+      }
+    } else if (isPurposeValid && purpose === "switching") {
+      // Handle the Switching purpose
+      if (pid !== null && pid !== undefined && condition !== null && condition !== undefined && isTaskValid && isModalityValid) {
+        console.debug("condition", condition)
+        dispatch(authLogin(pid, purpose, taskType, modality, condition)).then(() => {
+          history.replace('/task')
+        })
+      }
     }
   }, [])
 

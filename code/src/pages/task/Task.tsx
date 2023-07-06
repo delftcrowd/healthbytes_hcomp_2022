@@ -63,7 +63,6 @@ export default function TaskPage() {
     if (isConsentRevoked) {
       return <ConsentRevokedScreen />
     }
-    console.debug('renderPage', visitPurpose)
 
     switch (visitPurpose) {
       case 'hcomp':

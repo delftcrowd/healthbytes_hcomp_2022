@@ -4,7 +4,7 @@ import { ACCESS_TOKEN_NAME, REFRESH_TOKEN_NAME } from 'constants/AppConstants'
 import { createAuthProvider } from 'react-token-auth'
 import { clearErrorMessage, setErrorMessage } from 'store/slices/errorMessageSlice'
 import { sendingRequest } from 'store/slices/sendingRequestSlice'
-import { Purpose, InputModality, TaskType } from 'store/slices/taskSlice'
+import { Purpose, InputModality, TaskType, Condition } from 'store/slices/taskSlice'
 
 export interface Session {
   access_token: string
@@ -50,11 +50,11 @@ export const [useAuth, authFetch, login, logout] = createAuthProvider<Session>({
 
 // --------------- AXIOS
 
-export const authLogin = (pid: string, purpose: Purpose, taskType: TaskType, inputModality: InputModality ) => {
+export const authLogin = (pid: string, purpose: Purpose, taskType: TaskType, inputModality: InputModality, condition?: string ) => {
   return (dispatch: Dispatch) => {
     dispatch(sendingRequest(true))
     dispatch(clearErrorMessage())
-    return api.post<AuthenticationPayload>(`/auth/login`, { prolificId: pid, purpose, taskType, inputModality })
+    return api.post<AuthenticationPayload>(`/auth/login`, { prolificId: pid, purpose, taskType, inputModality, condition })
     .then(response => {
       setAccessToken(response.data.data.payload.token)
       if (response.data.data.payload.refresh_token) {

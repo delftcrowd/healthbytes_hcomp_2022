@@ -8,10 +8,17 @@ export type TaskType = typeof taskTypes[number]
 
 export const inputModalities = ['gesture', 'normal'] as const
 export type InputModality = typeof inputModalities[number]
+
+export const conditions = ['A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11', 'A12', 'A13', 'A14', 'A15',
+'B0', 'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10', 'B11', 'B12', 'B13', 'B14', 'B15',
+] as const
+export type Condition = typeof conditions[number]
+
 export interface Task {
   taskType?: TaskType
   inputModality?: InputModality
   purpose?: Purpose
+  condition?: Condition
   user: string
   questionNumber: number
   complete: boolean
@@ -44,8 +51,8 @@ export const taskProgress = createSlice({
       state.taskType = action.payload.taskType
       state.inputModality = action.payload.inputModality
       state.purpose = action.payload.purpose
+      state.condition = action.payload.condition,
       state.user = action.payload.user
-      console.debug('setTask', state.purpose)
     }
   },
 })
