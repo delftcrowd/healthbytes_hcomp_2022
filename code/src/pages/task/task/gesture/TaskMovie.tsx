@@ -165,7 +165,7 @@ export const TaskMovie: React.FC = () => {
   }, [questionNumber])
 
   useLayoutEffect(() => {
-    healthByteRef.current?.addOverlays(drawOutFace)
+    // healthByteRef.current?.addOverlays(drawOutFace)
 
     healthByteRef.current?.addOverlays((canvas) => {
       const ctx = canvas.getContext("2d")

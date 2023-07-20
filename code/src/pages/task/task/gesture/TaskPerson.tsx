@@ -145,7 +145,7 @@ export const TaskPerson: React.FC<{ taskType: string }> = ({ taskType, ...props 
   }, [questionNumber])
 
   useLayoutEffect(() => {
-    healthByteRef.current?.addOverlays(drawOutFace)
+    // healthByteRef.current?.addOverlays(drawOutFace)
   }, [healthByteRef.current])
 
   const connectorOrLandmarkOptions: ConnectorOrLandmarkOptions = useMemo(() => ({ body: true }), [])

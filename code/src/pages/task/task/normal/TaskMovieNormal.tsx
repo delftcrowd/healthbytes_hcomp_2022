@@ -24,7 +24,7 @@ export const TaskMovieNormal: React.FC = () => {
       return
     }
 
-    dispatch(sendPose(PoseAction.SUBMIT))
+    // dispatch(sendPose(PoseAction.SUBMIT))
     dispatch(sendAnswer(answerRef.current))
     answerRef.current = 0
     setAnswerValue(0)

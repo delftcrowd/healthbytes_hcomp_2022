@@ -43,7 +43,6 @@ const ProlificEntry = () => {
     } else if (isPurposeValid && purpose === "switching") {
       // Handle the Switching purpose
       if (pid !== null && pid !== undefined && condition !== null && condition !== undefined && isTaskValid && isModalityValid) {
-        console.debug("condition", condition)
         dispatch(authLogin(pid, purpose, taskType, modality, condition)).then(() => {
           history.replace('/task')
         })

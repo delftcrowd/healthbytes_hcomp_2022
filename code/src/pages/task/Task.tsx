@@ -4,6 +4,7 @@ import RevokeConsentButton from 'components/atoms/RevokeConsent'
 import { CenterPage } from 'components/molecules/CenterCard'
 import { getTask, loadConsent } from 'components/utils/task'
 import { Stages } from 'constants/AppConstants'
+import { BetweenTaskLandingPage } from 'pages/BetweenTaskLandingPage'
 import ConsentRevokedScreen from 'pages/task/ConsentRevokedScreen'
 import { EndPage } from 'pages/task/EndPage'
 import { LandingPage } from 'pages/task/LandingPage'
@@ -29,13 +30,12 @@ import { RootState } from 'store/store'
 export default function TaskPage() {
   const taskState = useAppSelector((state: RootState) => state.task.state)
   const visitPurpose = useAppSelector((state: RootState) => state.task.purpose)
+  const condition = useAppSelector((state: RootState) => state.task.condition)
   const taskType = useAppSelector((state: RootState) => state.task.taskType)
   const inputModality = useAppSelector((state: RootState) => state.task.inputModality)
   const isConsentRevoked = useAppSelector((state: RootState) => state.consent.isRevoked)
   const dispatch = useAppDispatch()
   const stage: Stages = (taskState as unknown) as Stages
-
-  console.debug('TaskPage start', visitPurpose)
 
   function renderTutorial() {
     switch (taskType) {
@@ -75,11 +75,127 @@ export default function TaskPage() {
             return 'Loading... Refresh if takes too long'
         }
       case 'switching':
+        if (condition !== null && condition !== undefined) {
+          return renderSwitchingPage(condition)
+        }
+        // switch (condition) {
+        //   case 'A0':
+        //     return renderA1Page()
+        //   case 'A1':
+        //     return renderA1Page()
+        //   case 'A2':
+        //     return renderA1Page()
+        //   case 'A3':
+        //     return renderA1Page()
+        //   case 'A4':
+        //     return renderA1Page()
+        //   case 'A5':
+        //     return renderA1Page()
+        //   case 'A6':
+        //     return renderA1Page()
+        //   case 'A7':
+        //     return renderA1Page()
+        //   case 'A8':
+        //     return renderA1Page()
+        //   case 'A9':
+        //     return renderA1Page()
+        //   case 'A10':
+        //     return renderA1Page()
+        //   case 'A11':
+        //     return renderA1Page()
+        //   case 'A12':
+        //     return renderA1Page()
+        //   case 'A13':
+        //     return renderA1Page()
+        //   case 'A14':
+        //     return renderA1Page()
+        //   case 'A15':
+        //     return renderA1Page()
+        //   case 'B0':
+        //     return renderA1Page()
+        //   case 'B1':
+        //     return renderA1Page()
+        //   case 'B2':
+        //     return renderA1Page()
+        //   case 'B3':
+        //     return renderA1Page()
+        //   case 'B4':
+        //     return renderA1Page()
+        //   case 'B5':
+        //     return renderA1Page()
+        //   case 'B6':
+        //     return renderA1Page()
+        //   case 'B7':
+        //     return renderA1Page()
+        //   case 'B8':
+        //     return renderA1Page()
+        //   case 'B9':
+        //     return renderA1Page()
+        //   case 'B10':
+        //     return renderA1Page()
+        //   case 'B11':
+        //     return renderA1Page()
+        //   case 'B12':
+        //     return renderA1Page()
+        //   case 'B13':
+        //     return renderA1Page()
+        //   case 'A14':
+        //     return renderA1Page()
+        //   case 'A15':
+        //     return renderA1Page()
+        // }
         return 'You have correctly entered the switch case'
       default:
         return 'Loading... Refresh if takes too long'
     }
     
+  }
+
+  function renderSwitchingPage(condition: string) {
+    console.log("renderSwitchingPage", condition)
+    switch (stage) {
+      case Stages.landingPage:
+        return <LandingPage />
+      case Stages.entryQuestionnaire:
+        return <EntryQuestionnaire />
+      //   // TODO Expand tutorial to include clearer instructions and more questions to answer
+      case Stages.tutorial:
+        if (inputModality == "normal") {
+          return renderTutorialNormal()
+        } else {
+          return renderTutorial()
+        }
+      // case Stages.task:
+      //   return <div>task</div> // this should not render
+      //   // TODO Devise this as a task sequence with optional second instance (plus decision page) rather than a single task
+      // case Stages.taskBird:
+      //   return <TaskBirdNormal />
+      case Stages.taskMovieStart:
+        return <TaskMovieNormal />
+      case Stages.taskMovieMid:
+        return <TaskMovieNormal />
+      case Stages.taskMovieEnd:
+        return <TaskMovieNormal />
+      case Stages.startMidLandingPage:
+        return <BetweenTaskLandingPage />
+      case Stages.midEndLandingPage:
+        return <BetweenTaskLandingPage />
+      case Stages.taskEnd:
+        return <CenterPage>
+          <Typography variant='subtitle1' marginBottom='1em' fontWeight='medium' textTransform='uppercase'>All tasks completed!</Typography>
+          <Typography variant='subtitle1' marginBottom='2em' textAlign='justify' lineHeight={1.6} >Please proceed to the next step.</Typography>
+          <NextButton buttonText="Next" />
+        </CenterPage>
+      // Update exit questionnaire to new measures and versions of questions (TLX, UES, etc)
+      case Stages.exitQuestionnaire:
+        return <ExitQuestionnaire />
+      case Stages.end:
+        return <EndPage />
+      case Stages.empty:
+        return <CenterPage>Loading...</CenterPage>
+      default:
+        return <div>Invalid state</div>
+    }
   }
 
   function renderNormalPage() {
@@ -93,7 +209,7 @@ export default function TaskPage() {
         return renderTutorialNormal()
       case Stages.task:
         return <div>task</div> // this should not render
-        // TODO Device this as a task sequence with optional second instance (plus decision page) rather than a single task
+        // TODO Devise this as a task sequence with optional second instance (plus decision page) rather than a single task
       case Stages.taskBird:
         return <TaskBirdNormal />
       case Stages.taskMovie:
