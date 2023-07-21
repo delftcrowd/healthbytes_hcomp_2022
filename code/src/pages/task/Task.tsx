@@ -78,73 +78,7 @@ export default function TaskPage() {
         if (condition !== null && condition !== undefined) {
           return renderSwitchingPage(condition)
         }
-        // switch (condition) {
-        //   case 'A0':
-        //     return renderA1Page()
-        //   case 'A1':
-        //     return renderA1Page()
-        //   case 'A2':
-        //     return renderA1Page()
-        //   case 'A3':
-        //     return renderA1Page()
-        //   case 'A4':
-        //     return renderA1Page()
-        //   case 'A5':
-        //     return renderA1Page()
-        //   case 'A6':
-        //     return renderA1Page()
-        //   case 'A7':
-        //     return renderA1Page()
-        //   case 'A8':
-        //     return renderA1Page()
-        //   case 'A9':
-        //     return renderA1Page()
-        //   case 'A10':
-        //     return renderA1Page()
-        //   case 'A11':
-        //     return renderA1Page()
-        //   case 'A12':
-        //     return renderA1Page()
-        //   case 'A13':
-        //     return renderA1Page()
-        //   case 'A14':
-        //     return renderA1Page()
-        //   case 'A15':
-        //     return renderA1Page()
-        //   case 'B0':
-        //     return renderA1Page()
-        //   case 'B1':
-        //     return renderA1Page()
-        //   case 'B2':
-        //     return renderA1Page()
-        //   case 'B3':
-        //     return renderA1Page()
-        //   case 'B4':
-        //     return renderA1Page()
-        //   case 'B5':
-        //     return renderA1Page()
-        //   case 'B6':
-        //     return renderA1Page()
-        //   case 'B7':
-        //     return renderA1Page()
-        //   case 'B8':
-        //     return renderA1Page()
-        //   case 'B9':
-        //     return renderA1Page()
-        //   case 'B10':
-        //     return renderA1Page()
-        //   case 'B11':
-        //     return renderA1Page()
-        //   case 'B12':
-        //     return renderA1Page()
-        //   case 'B13':
-        //     return renderA1Page()
-        //   case 'A14':
-        //     return renderA1Page()
-        //   case 'A15':
-        //     return renderA1Page()
-        // }
-        return 'You have correctly entered the switch case'
+        return 'No condition defined'
       default:
         return 'Loading... Refresh if takes too long'
     }
@@ -152,7 +86,7 @@ export default function TaskPage() {
   }
 
   function renderSwitchingPage(condition: string) {
-    console.log("renderSwitchingPage", condition)
+    console.debug("renderSwitchingPage", condition)
     switch (stage) {
       case Stages.landingPage:
         return <LandingPage />
@@ -167,15 +101,47 @@ export default function TaskPage() {
         }
       // case Stages.task:
       //   return <div>task</div> // this should not render
-      //   // TODO Devise this as a task sequence with optional second instance (plus decision page) rather than a single task
-      // case Stages.taskBird:
-      //   return <TaskBirdNormal />
+      case Stages.taskBirdStart:
+        dispatch(getTask())
+        if (inputModality == "normal") {
+          return <TaskBirdNormal />
+        } else {
+          return <TaskBird />
+        }
+      case Stages.taskBirdMid:
+        dispatch(getTask())
+        if (inputModality == "normal") {
+          return <TaskBirdNormal />
+        } else {
+          return <TaskBird />
+        }
+      case Stages.taskBirdEnd:
+        dispatch(getTask())
+        if (inputModality == "normal") {
+          return <TaskBirdNormal />
+        } else {
+          return <TaskBird />
+        }
       case Stages.taskMovieStart:
-        return <TaskMovieNormal />
+        if (inputModality == "normal") {
+          return <TaskMovieNormal />
+        } else {
+          return <TaskMovie />
+        }
       case Stages.taskMovieMid:
-        return <TaskMovieNormal />
+        dispatch(getTask())
+        if (inputModality == "normal") {
+          return <TaskMovieNormal />
+        } else {
+          return <TaskMovie />
+        }
       case Stages.taskMovieEnd:
-        return <TaskMovieNormal />
+        dispatch(getTask())
+        if (inputModality == "normal") {
+          return <TaskMovieNormal />
+        } else {
+          return <TaskMovie />
+        }
       case Stages.startMidLandingPage:
         return <BetweenTaskLandingPage />
       case Stages.midEndLandingPage:

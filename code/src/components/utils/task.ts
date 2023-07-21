@@ -150,3 +150,23 @@ export const isExitQuestionnaireComplete = () => {
     })
   }
 }
+
+export const toggleInputModality = () => {
+  return (dispatch: Dispatch) => {
+    return api.post<boolean>('/user/toggleInputModality', {}, {
+      headers: {
+        'Authorization': `Bearer ${getAccessToken()}`
+      }
+    })
+  }
+}
+
+export const toggleTaskType = () => {
+  return (dispatch: Dispatch) => {
+    return api.post<boolean>('/user/toggleTaskType', {}, {
+      headers: {
+        'Authorization': `Bearer ${getAccessToken()}`
+      }
+    })
+  }
+}
