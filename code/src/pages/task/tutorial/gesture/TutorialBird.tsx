@@ -179,7 +179,7 @@ export const TutorialBird = () => {
   }, [])
 
   useLayoutEffect(() => {
-    healthByteRef.current?.addOverlays(drawOutFace)
+    // healthByteRef.current?.addOverlays(drawOutFace)
 
     healthByteRef.current?.addOverlays((canvas) => {
       const ctx = canvas.getContext("2d")

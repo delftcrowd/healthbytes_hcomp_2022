@@ -16,9 +16,9 @@ import { TaskPerson } from 'pages/task/task/gesture/TaskPerson'
 import { TaskBirdNormal } from 'pages/task/task/normal/TaskBirdNormal'
 import { TaskMovieNormal } from 'pages/task/task/normal/TaskMovieNormal'
 import { TaskPersonNormal } from 'pages/task/task/normal/TaskPersonNormal'
-import { TutorialBird } from 'pages/task/tutorial/gusture/TutorialBird'
-import { TutorialMovie } from 'pages/task/tutorial/gusture/TutorialMovie'
-import { TutorialPerson } from 'pages/task/tutorial/gusture/TutorialPerson'
+import { TutorialBird } from 'pages/task/tutorial/gesture/TutorialBird'
+import { TutorialMovie } from 'pages/task/tutorial/gesture/TutorialMovie'
+import { TutorialPerson } from 'pages/task/tutorial/gesture/TutorialPerson'
 import { TutorialBirdNormal } from 'pages/task/tutorial/normal/TutorialBirdNormal'
 import { TutorialMovieNormal } from 'pages/task/tutorial/normal/TutorialMovieNormal'
 import { TutorialPersonNormal } from 'pages/task/tutorial/normal/TutorialPersonNormal'
@@ -86,7 +86,6 @@ export default function TaskPage() {
   }
 
   function renderSwitchingPage(condition: string) {
-    console.debug("renderSwitchingPage", condition)
     switch (stage) {
       case Stages.landingPage:
         return <LandingPage />
@@ -102,7 +101,6 @@ export default function TaskPage() {
       // case Stages.task:
       //   return <div>task</div> // this should not render
       case Stages.taskBirdStart:
-        dispatch(getTask())
         if (inputModality == "normal") {
           return <TaskBirdNormal />
         } else {

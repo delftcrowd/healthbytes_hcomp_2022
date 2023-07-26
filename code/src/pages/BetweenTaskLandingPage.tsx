@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material"
 import { NextButton } from "components/atoms/NextButton"
 import { CenterPage } from "components/molecules/CenterCard"
-import { toggleInputModality, toggleTaskType } from 'components/utils/task'
+import { toggleInputModality, toggleUserTaskType } from 'components/utils/task'
 import { FormEventHandler, useState } from 'react'
 import { useAppDispatch, useAppSelector } from "store/hooks"
 import { RootState } from "store/store"
@@ -34,7 +34,7 @@ export const BetweenTaskLandingPage = () => {
                 
                 // Check condition to swap task type if needed
                 if (condition !== null && condition !== undefined && condition.slice(0,1) == "B") {
-                    dispatch(toggleTaskType())
+                    dispatch(toggleUserTaskType())
                 }
                 return <>
                     You have completed the first task!
@@ -47,7 +47,7 @@ export const BetweenTaskLandingPage = () => {
 
                 // Check condition to swap task type if needed
                 if (condition !== null && condition !== undefined && condition.slice(0,1) == "B") {
-                    dispatch(toggleTaskType())
+                    dispatch(toggleUserTaskType())
                 }
                 return <>
                     You have completed the second task!

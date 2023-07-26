@@ -134,7 +134,7 @@ export const TutorialPerson = () => {
   }, [])
 
   useLayoutEffect(() => {
-    healthByteRef.current?.addOverlays(drawOutFace)
+    // healthByteRef.current?.addOverlays(drawOutFace)
   }, [healthByteRef.current])
 
   const getCurrentText = () => {

@@ -36,7 +36,7 @@ export const getTask = () => {
       headers: {
         'Authorization': `Bearer ${getAccessToken()}`
       }
-    }).then(data => {
+    }).then((data) => {
       if (data.data) {
         dispatch(setTask(data.data))
       }
@@ -161,7 +161,7 @@ export const toggleInputModality = () => {
   }
 }
 
-export const toggleTaskType = () => {
+export const toggleUserTaskType = () => {
   return (dispatch: Dispatch) => {
     return api.post<boolean>('/user/toggleTaskType', {}, {
       headers: {
