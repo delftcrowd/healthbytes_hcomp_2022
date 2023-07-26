@@ -91,15 +91,13 @@ export default function TaskPage() {
         return <LandingPage />
       case Stages.entryQuestionnaire:
         return <EntryQuestionnaire />
-      //   // TODO Expand tutorial to include clearer instructions and more questions to answer
+      // TODO Expand tutorial to include clearer instructions and more questions to answer
       case Stages.tutorial:
         if (inputModality == "normal") {
           return renderTutorialNormal()
         } else {
           return renderTutorial()
         }
-      // case Stages.task:
-      //   return <div>task</div> // this should not render
       case Stages.taskBirdStart:
         if (inputModality == "normal") {
           return <TaskBirdNormal />
@@ -108,17 +106,23 @@ export default function TaskPage() {
         }
       case Stages.taskBirdMid:
         dispatch(getTask())
-        if (inputModality == "normal") {
+
+        if (['A8', 'A10', 'A12', 'A14', 'B0', 'B2', 'B4', 'B6'].includes(condition)) {
           return <TaskBirdNormal />
-        } else {
+        } else if (['A9', 'A11', 'A13', 'A15', 'B1', 'B3', 'B5', 'B7'].includes(condition)) {
           return <TaskBird />
+        } else {
+          return <div>Invalid condition and state pairing</div>
         }
       case Stages.taskBirdEnd:
         dispatch(getTask())
-        if (inputModality == "normal") {
+
+        if (['A9', 'A10', 'A11', 'A14', 'B9', 'B10', 'B11', 'B14'].includes(condition)) {
           return <TaskBirdNormal />
-        } else {
+        } else if (['A8', 'A12', 'A13', 'A15', 'B8', 'B12', 'B13', 'B15'].includes(condition)) {
           return <TaskBird />
+        } else {
+          return <div>Invalid condition and state pairing</div>
         }
       case Stages.taskMovieStart:
         if (inputModality == "normal") {
@@ -128,17 +132,24 @@ export default function TaskPage() {
         }
       case Stages.taskMovieMid:
         dispatch(getTask())
-        if (inputModality == "normal") {
+
+        if (['A0', 'A2', 'A4', 'A6', 'B8', 'B10', 'B12', 'B14'].includes(condition)) {
           return <TaskMovieNormal />
-        } else {
+        } else if (['A1', 'A3', 'A5', 'A7', 'B9', 'B11', 'B13', 'B15'].includes(condition)) {
           return <TaskMovie />
+        } else {
+          return <div>Invalid condition and state pairing</div>
         }
+
       case Stages.taskMovieEnd:
         dispatch(getTask())
-        if (inputModality == "normal") {
+
+        if (['A1', 'A2', 'A3', 'A6', 'B1', 'B2', 'B3', 'B6'].includes(condition)) {
           return <TaskMovieNormal />
-        } else {
+        } else if (['A0', 'A4', 'A5', 'A7', 'B0', 'B4', 'B5', 'B7'].includes(condition)) {
           return <TaskMovie />
+        } else {
+          return <div>Invalid condition and state pairing</div>
         }
       case Stages.startMidLandingPage:
         return <BetweenTaskLandingPage />
