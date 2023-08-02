@@ -22,6 +22,7 @@ import { TutorialPerson } from 'pages/task/tutorial/gesture/TutorialPerson'
 import { TutorialBirdNormal } from 'pages/task/tutorial/normal/TutorialBirdNormal'
 import { TutorialMovieNormal } from 'pages/task/tutorial/normal/TutorialMovieNormal'
 import { TutorialPersonNormal } from 'pages/task/tutorial/normal/TutorialPersonNormal'
+import { TutorialSwitching } from 'pages/task/tutorial/switching/TutorialSwitching'
 import { useEffect } from 'react'
 import { isChrome, isDesktop, isEdgeChromium } from 'react-device-detect'
 import { useAppDispatch, useAppSelector } from 'store/hooks'
@@ -91,13 +92,8 @@ export default function TaskPage() {
         return <LandingPage />
       case Stages.entryQuestionnaire:
         return <EntryQuestionnaire />
-      // TODO Expand tutorial to include clearer instructions and more questions to answer
       case Stages.tutorial:
-        if (inputModality == "normal") {
-          return renderTutorialNormal()
-        } else {
-          return renderTutorial()
-        }
+        return <TutorialSwitching />
       case Stages.taskBirdStart:
         if (inputModality == "normal") {
           return <TaskBirdNormal />

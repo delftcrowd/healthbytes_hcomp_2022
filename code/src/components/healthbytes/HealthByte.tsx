@@ -74,6 +74,7 @@ const HealthByte = React.forwardRef<HealthByteHandle, HealthByteProps>((
     },
     addOverlays(overlayFunction: OverlayFunction) {
       overlayFunctions.current.push(overlayFunction)
+      console.debug("Overlays: ", overlayFunctions.current.length)
     },
     clearOverlays() {
       overlayFunctions.current.length = 0

@@ -35,4 +35,8 @@ export class GestureClassifier {
       }
     }
   }
+
+  static reset = () => {
+    this.GE = undefined
+  }
 }
