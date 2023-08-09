@@ -27,8 +27,8 @@ export const EntryQuestionnaire = () => {
       <iframe
         allowFullScreen
         className='w-full h-[60vh]'
-        // src={`https://tudelft.fra1.qualtrics.com/jfe/form/SV_bKJDhU6yHphGOsS?PID=${pid}`}
-        src={`https://tudelft.fra1.qualtrics.com/jfe/form/SV_2soJQSzaECKxYGi?PID=${pid}`}
+        // src={`https://tudelft.fra1.qualtrics.com/jfe/form/SV_2soJQSzaECKxYGi?PID=${pid}`}
+        src={`https://tudelft.fra1.qualtrics.com/jfe/form/SV_40Lj69Ob2xPujVc?PID=${pid}`}
       ></iframe>
 
       <Button variant='contained' onClick={checkCompleted} sx={{ marginTop: '1em' }} color={'success'}>Proceed to next step</Button>
