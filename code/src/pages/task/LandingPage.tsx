@@ -121,7 +121,7 @@ export const LandingPage = () => {
       }
     } else {
       return <>
-        We are a group of researchers at the Technical University of Delft in The Netherlands. In this research project, we aim to investigate the effects of transitioning input modalities in crowd-sourced microtasks. For example, consider you have a series of tasks that you need to complete. Typically, the solution is to use a mouse and keyboard to interact and make the proper selections. Our group has been investigating the use of gestures, i.e., specific motions captured by web cam, as a means of input. In this study, you will be making use of both the gesture and mouse and keyboard input styles.
+        We are a group of researchers at the Delft University of Technology in The Netherlands. In this research project, we aim to investigate input modalities in crowd-sourced microtasks. For example, consider you have a series of tasks that you need to complete. Typically, the solution is to use a mouse and keyboard to interact and make the proper selections. Our group has been investigating the use of gestures, i.e., specific motions captured by web cam, as a means of input. In this study, you may be asked to use both the gesture and mouse and keyboard input styles.
         <LineBreak />
         This task is part of the research project described above. We first walk you through a sample of how to interact with the gesture detection software. Afterwards, you will be presented with one of two tasks. In one variation, you will see a written review about a film or TV show. Using the content of that review, you will select a star rating that you believe aligns with the sentiment of the content. These ratings can range from 1 to 5 stars. You will be asked to do this for 10 reviews. The other variation will present you with images of birds, and asks you to identify the shape of the beak. You will be asked to annotate 10 images.  Between each task, you will be switching the input style used. You will be randomly assigned to a series of 3 batches (for a total of 30 prompts). The series may be all of the same type of tasks, as described prior, or a mixture of the two.
         <LineBreak />
@@ -131,7 +131,7 @@ export const LandingPage = () => {
         <LineBreak />
         We will keep your information confidential. All data is stored in a password protected electronic format. Be aware that the data we gather with this task might be published in an anonymized form later. Such an anonymized data set would include the answers you provide in this task, but no personal information (e.g., your worker ID) so that the answers will not be traceable back to you. 
         <LineBreak />
-        For the completion of this task, you will be rewarded at an hourly rate of 10 GBP.
+        For the completion of this task, you will be rewarded at an hourly rate of 9 GBP. If your performance falls in the top 25th percentile, you will qualify for a bonus reward.
 
         <LineBreak height="1.6em" />
         By clicking 'I consent' at the bottom of this page and completing the task, you confirm that you have read, understood, and consent to the above information.
