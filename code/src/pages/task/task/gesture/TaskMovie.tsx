@@ -1,6 +1,7 @@
 import { NormalizedLandmarkList } from '@mediapipe/holistic'
 import { Rating, Typography } from '@mui/material'
 import Counter from 'components/atoms/Counter'
+import EndOptionalTaskButton from 'components/atoms/EndOptionalTasks'
 import InstructionButton from 'components/atoms/InstructionButton'
 import fistDescription from 'components/gestures/fingerpose/fist'
 import fiveDescription from 'components/gestures/fingerpose/five'
@@ -35,6 +36,7 @@ export interface HandGesture {
 }
 
 export const TaskMovie: React.FC = () => {
+  const optedForOptional = useAppSelector((state: RootState) => state.task.optedForOptional)
   const questionNumber = useAppSelector((state: RootState) => state.task.questionNumber)
   const question = useSelector((state: RootState) => state.question)
   const answerRef = useRef<number>(0)
@@ -212,13 +214,27 @@ export const TaskMovie: React.FC = () => {
 
       <Rating name="Rating" value={answer} size="large" readOnly />
 
-      <HealthByte
-        ref={healthByteRef}
-        classifier={classifier.current}
-        showConnectors={connectorOrLandmarkOptions}
-        showLandmarks={connectorOrLandmarkOptions}
-        className="w-1/2 mx-auto" />
-      <Counter />
+      {optedForOptional ? 
+      <>
+        <HealthByte
+          ref={healthByteRef}
+          classifier={classifier.current}
+          showConnectors={connectorOrLandmarkOptions}
+          showLandmarks={connectorOrLandmarkOptions}
+          className="w-1/2 mx-auto" />
+        <Counter />
+        <EndOptionalTaskButton />
+      </> : 
+      <>
+        <HealthByte
+          ref={healthByteRef}
+          classifier={classifier.current}
+          showConnectors={connectorOrLandmarkOptions}
+          showLandmarks={connectorOrLandmarkOptions}
+          className="w-1/2 mx-auto" />
+        <Counter />
+      </>}
+      
     </CenterPage>
   )
 }

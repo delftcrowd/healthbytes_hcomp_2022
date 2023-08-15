@@ -1,9 +1,9 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material"
-import { revokeConsent } from "components/utils/task"
+import { endOptional, proceedTask } from "components/utils/task"
 import { useState } from "react"
 import { useAppDispatch } from "store/hooks"
 
-const RevokeConsentButton = () => {
+const EndOptionalTaskButton = () => {
   const dispatch = useAppDispatch()
   const [open, setOpen] = useState(false)
 
@@ -14,30 +14,32 @@ const RevokeConsentButton = () => {
     setOpen(false)
   }
   const handleSubmit = () => {
-    dispatch(revokeConsent())
+    dispatch(endOptional()).then(() => {
+      dispatch(proceedTask())
+    })
   }
 
-  return <div className="fixed top-0 left-0 mt-2 ml-2">
-    <Button variant='contained' onClick={handleOpen}>REVOKE CONSENT</Button>
+  return <>
+    <Button variant='contained' onClick={handleOpen} color="info">End Task</Button>
     <Dialog
       open={open}
       onClose={handleClose}
-      aria-labelledby="Revoke consent"
+      aria-labelledby="End optional"
     >
       <DialogTitle id="alert-dialog-title">
         Are you sure you want to leave?
       </DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
-          By revoking your consent, you will NOT RECEIVE any reward or payment. Once confirmed you will not be allowed to continue or finish this task anymore.
+          By choosing to end the task, you will be taken to the ending landing page, whereby you can access the exit survey. Once confirmed you will not be allowed to continue this task anymore.
         </DialogContentText>
       </DialogContent>
       <DialogActions>
         <Button variant="contained" onClick={handleClose} color="info" autoFocus>Cancel</Button>
-        <Button onClick={handleSubmit} color="error">Revoke consent</Button>
+        <Button onClick={handleSubmit} color="error">End Task</Button>
       </DialogActions>
     </Dialog>
-  </div>
+  </>
 }
 
-export default RevokeConsentButton
+export default EndOptionalTaskButton

@@ -129,6 +129,16 @@ export const revokeConsent = () => {
   }
 }
 
+export const endOptional = () => {
+  return () => {
+    return api.post<boolean>('/task/endOptional', {}, {
+      headers: {
+        'Authorizationa': `Bearer ${getAccessToken()}`
+      }
+    })
+  }
+}
+
 export const loadConsent = () => {
   return (dispatch: Dispatch) => {
     api.get<boolean>('/user/isConsentRevoked', {

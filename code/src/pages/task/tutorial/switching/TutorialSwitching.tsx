@@ -499,7 +499,7 @@ export const TutorialSwitching = () => {
                       image={`/public/bird_beaks/example/${answer}.jpeg`}
                     />
                     <CardContent>
-                      <Typography gutterBottom variant="subtitle2" component="div">{idx + 1}.{answer}</Typography>
+                      <Typography gutterBottom variant="subtitle2" component="div">{idx + 1}. {answer[0].toUpperCase() + answer.slice(1)}</Typography>
                     </CardContent>
                   </Card>
                 </Grid>

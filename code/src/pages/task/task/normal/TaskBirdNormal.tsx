@@ -1,6 +1,7 @@
 import { NormalizedLandmarkList } from '@mediapipe/holistic'
 import { Button, Card, CardContent, CardMedia, Grid, Typography } from '@mui/material'
 import InstructionButton from 'components/atoms/InstructionButton'
+import EndOptionalTaskButton from 'components/atoms/EndOptionalTasks'
 import { CenterPage } from 'components/molecules/CenterCard'
 import { loadQuestion, sendAnswer, sendPose } from 'components/utils/task'
 import { PoseAction } from 'constants/AppConstants'
@@ -23,6 +24,7 @@ export interface BirdHandGesture {
 }
 
 export const TaskBirdNormal: React.FC = () => {
+  const optedForOptional = useAppSelector((state: RootState) => state.task.optedForOptional)
   const questionNumber = useAppSelector((state: RootState) => state.task.questionNumber)
   const question = useSelector((state: RootState) => state.question)
   const questionRef = useRef<QuestionState>()
@@ -98,13 +100,29 @@ export const TaskBirdNormal: React.FC = () => {
         }
       </Grid>
 
+      {optedForOptional ? <>
+        <Grid container spacing={4} sx={{ justifyContent: 'center' }}>
+          <Grid item xs={2}>
+            <EndOptionalTaskButton />
+          </Grid>
+          <Grid item xs={2}>
+            <Button 
+              variant='contained'
+              color='info'
+              size='large'
+              disabled={!answer}
+              onClick={submitAnswer}
+            >Submit answer</Button>
+          </Grid>
+        </Grid>
+      </> :
       <Button
         variant='contained'
         color='info'
         size='large'
         disabled={!answer}
         onClick={submitAnswer}
-      >Submit answer</Button>
+      >Submit answer</Button>}
 
     </CenterPage >
   )

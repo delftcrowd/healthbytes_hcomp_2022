@@ -1,6 +1,7 @@
 import { NormalizedLandmarkList } from '@mediapipe/holistic'
 import { Card, CardContent, CardMedia, Grid, Typography } from '@mui/material'
 import Counter from 'components/atoms/Counter'
+import EndOptionalTaskButton from 'components/atoms/EndOptionalTasks'
 import InstructionButton from 'components/atoms/InstructionButton'
 import indexDescription from 'components/gestures/fingerpose'
 import middleDescription from 'components/gestures/fingerpose/middle'
@@ -36,6 +37,7 @@ export interface BirdHandGesture {
 }
 
 export const TaskBird: React.FC = () => {
+  const optedForOptional = useAppSelector((state: RootState) => state.task.optedForOptional)
   const questionNumber = useAppSelector((state: RootState) => state.task.questionNumber)
   const question = useSelector((state: RootState) => state.question)
   const questionRef = useRef<QuestionState>()
@@ -238,7 +240,7 @@ export const TaskBird: React.FC = () => {
                   image={`/public/bird_beaks/example/${answer}.jpeg`}
                 />
                 <CardContent>
-                  <Typography gutterBottom variant="subtitle2" component="div">{idx + 1}.{answer}</Typography>
+                  <Typography gutterBottom variant="subtitle2" component="div">{idx + 1}. {answer[0].toUpperCase() + answer.slice(1)}</Typography>
                 </CardContent>
               </Card>
             </Grid>)
@@ -246,13 +248,28 @@ export const TaskBird: React.FC = () => {
       </Grid>
 
       <div className='w-full'>
-        <HealthByte
+        {optedForOptional ? 
+        <>
+          <HealthByte
           ref={healthByteRef}
           classifier={classifier.current}
           showConnectors={connectorOrLandmarkOptions}
           showLandmarks={connectorOrLandmarkOptions}
           className="w-1/3 mx-auto" />
         <Counter />
+        <div className="w-1/4 mx-auto">
+          <EndOptionalTaskButton />
+        </div>
+        </> : 
+        <>
+          <HealthByte
+          ref={healthByteRef}
+          classifier={classifier.current}
+          showConnectors={connectorOrLandmarkOptions}
+          showLandmarks={connectorOrLandmarkOptions}
+          className="w-1/3 mx-auto" />
+        <Counter />
+        </>}
       </div>
     </CenterPage >
   )
