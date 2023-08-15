@@ -151,13 +151,14 @@ export default function TaskPage() {
         return <BetweenTaskLandingPage />
       case Stages.midEndLandingPage:
         return <BetweenTaskLandingPage />
+      case Stages.optionalLandingPage:
+        return <BetweenTaskLandingPage />
       case Stages.taskEnd:
         return <CenterPage>
           <Typography variant='subtitle1' marginBottom='1em' fontWeight='medium' textTransform='uppercase'>All tasks completed!</Typography>
           <Typography variant='subtitle1' marginBottom='2em' textAlign='justify' lineHeight={1.6} >Please proceed to the next step.</Typography>
           <NextButton buttonText="Next" />
         </CenterPage>
-      // Update exit questionnaire to new measures and versions of questions (TLX, UES, etc)
       case Stages.exitQuestionnaire:
         return <ExitQuestionnaire />
       case Stages.end:

@@ -28,6 +28,7 @@ export const enum Stages {
   task = 'task',
   startMidLandingPage = 'task.startMidLandingPage',
   midEndLandingPage = 'task.midEndLandingPage',
+  optionalLandingPage = 'task.optionalLandingPage',
   taskMidname = 'task.midname',
   taskProfession = 'task.profession',
   taskBird = 'task.bird',

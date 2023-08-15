@@ -23,6 +23,7 @@ export interface Task {
   questionNumber: number
   complete: boolean
   state: string
+  optedForOptional: boolean
 }
 
 export interface TaskResponse {
@@ -37,7 +38,8 @@ const initialState: Task = {
   purpose: undefined,
   taskType: undefined,
   inputModality: undefined,
-  user: ''
+  user: '',
+  optedForOptional: false
 }
 
 export const taskProgress = createSlice({
@@ -53,6 +55,7 @@ export const taskProgress = createSlice({
       state.purpose = action.payload.purpose
       state.condition = action.payload.condition,
       state.user = action.payload.user
+      state.optedForOptional = action.payload.optedForOptional
     }
   },
 })

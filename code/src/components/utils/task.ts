@@ -107,6 +107,16 @@ export const sendPose = (poseAction: PoseAction, poseData?: LandmarkAggregate) =
   }
 }
 
+export const toggleOptedForOptional = () => {
+  return () => {
+    return api.post<boolean>('/task/toggleOptedForOptional', {
+      headers: {
+        'Authorization': `Bearer ${getAccessToken()}`
+      }
+    })
+  }
+}
+
 export const revokeConsent = () => {
   return (dispatch: Dispatch) => {
     api.post<boolean>(`/user/revokeConsent`, {}, {
