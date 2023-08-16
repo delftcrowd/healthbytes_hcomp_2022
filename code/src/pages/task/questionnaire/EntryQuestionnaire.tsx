@@ -1,6 +1,7 @@
 import { Button, Typography } from "@mui/material"
 import { CenterPage } from "components/molecules/CenterCard"
 import { isEntryQuestionnaireComplete, proceedTask } from "components/utils/task"
+import { PRE_TASK_SURVEY } from "constants/AppConstants"
 import { useAppDispatch, useAppSelector } from "store/hooks"
 import { setNotification } from "store/slices/notificationSlice"
 import { RootState } from "store/store"
@@ -27,8 +28,7 @@ export const EntryQuestionnaire = () => {
       <iframe
         allowFullScreen
         className='w-full h-[60vh]'
-        src={`https://tudelft.fra1.qualtrics.com/jfe/form/SV_2soJQSzaECKxYGi?PID=${pid}`}
-        // src={`https://tudelft.fra1.qualtrics.com/jfe/form/SV_40Lj69Ob2xPujVc?PID=${pid}`}
+        src={`${PRE_TASK_SURVEY}?PID=${pid}`}
       ></iframe>
 
       <Button variant='contained' onClick={checkCompleted} sx={{ marginTop: '1em' }} color={'success'}>Proceed to next step</Button>

@@ -2,6 +2,7 @@ import { Button, Typography } from "@mui/material"
 import { MyHolistic } from "components/healthbytes/MyHolistic"
 import { CenterPage } from "components/molecules/CenterCard"
 import { isExitQuestionnaireComplete, proceedTask } from "components/utils/task"
+import { POST_TASK_SURVEY } from "constants/AppConstants"
 import { useEffect } from "react"
 import { useAppDispatch, useAppSelector } from "store/hooks"
 import { setNotification } from "store/slices/notificationSlice"
@@ -34,8 +35,7 @@ export const ExitQuestionnaire = () => {
       <iframe
         allowFullScreen
         className='w-full h-[60vh]'
-        src={`https://tudelft.fra1.qualtrics.com/jfe/form/SV_bfKqbWRLpgAITbw?PID=${pid}`}
-        // src={`https://tudelft.fra1.qualtrics.com/jfe/form/SV_eneowq5o9KMOOTY?PID=${pid}`}
+        src={`${POST_TASK_SURVEY}?PID=${pid}`}
       ></iframe>
 
       <Button variant='contained' onClick={checkCompleted} sx={{ marginTop: '1em' }} color={'success'}>Proceed to next step</Button>
