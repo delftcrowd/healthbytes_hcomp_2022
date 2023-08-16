@@ -20,7 +20,7 @@ const EndOptionalTaskButton = () => {
   }
 
   return <>
-    <Button variant='contained' onClick={handleOpen} color="info">End Task</Button>
+    <Button variant='contained' onClick={handleOpen} color="error">End Task</Button>
     <Dialog
       open={open}
       onClose={handleClose}

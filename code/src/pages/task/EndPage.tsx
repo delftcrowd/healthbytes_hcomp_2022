@@ -13,7 +13,7 @@ export const EndPage = () => {
     <CenterPage>
       <Typography variant='h4' textAlign='center' marginBottom='1em'>End of the task!</Typography>
 
-      <Typography variant='subtitle1'>Thank you for participating!</Typography>
+      <Typography variant='subtitle1'>Thank you for participating! By clicking the button below, you will be redirected back to the crowdsourcing platform.</Typography>
 
       <Button
         variant='contained'
