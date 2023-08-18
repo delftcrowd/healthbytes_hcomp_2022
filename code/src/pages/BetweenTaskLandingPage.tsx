@@ -112,7 +112,7 @@ export const BetweenTaskLandingPage = () => {
             <Typography variant='subtitle1' marginBottom='2em' textAlign='justify' lineHeight={1.6} >When you are ready, click the button below to proceed.</Typography>
             <NextButton buttonText="Proceed" type="submit" form="intermediateForm" />
           </> : <>
-            <Typography variant='subtitle1' marginBottom='2em' textAlign='justify' lineHeight={1.6} >You may now continue to the exit survey, or optionally answer more questions. If you choose to do more tasks, you will simply repeat the process you just completed with new questions. <strong>Would you like to opt in for completing more tasks?</strong></Typography>
+            <Typography variant='subtitle1' marginBottom='2em' textAlign='justify' lineHeight={1.6} >You may now continue to the exit survey, or optionally answer more questions. <strong>Would you like to opt in for completing more tasks?</strong></Typography>
             <Grid container spacing={4} sx={{ justifyContent: 'center' }}>
                 <Grid item xs={2}>
                     <NextButton buttonText="No" color="error" type="submit" form="intermediateForm" />
