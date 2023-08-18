@@ -8,6 +8,7 @@ import { RootState } from "store/store"
 
 export const EntryQuestionnaire = () => {
   const pid = useAppSelector((state: RootState) => state.task.user)
+  const condition = useAppSelector((state: RootState) => state.task.condition)
   const dispatch = useAppDispatch()
 
   const checkCompleted = () => {
@@ -28,7 +29,7 @@ export const EntryQuestionnaire = () => {
       <iframe
         allowFullScreen
         className='w-full h-[60vh]'
-        src={`${PRE_TASK_SURVEY}?PID=${pid}`}
+        src={`${PRE_TASK_SURVEY}?PID=${pid}&condition=${condition}`}
       ></iframe>
 
       <Button variant='contained' onClick={checkCompleted} sx={{ marginTop: '1em' }} color={'success'}>Proceed to next step</Button>
