@@ -131,7 +131,7 @@ export const LandingPage = () => {
         <LineBreak />
         We will keep your information confidential. All data is stored in a password protected electronic format. Be aware that the data we gather with this task might be published in an anonymized form later. Such an anonymized data set would include the answers you provide in this task, but no personal information (e.g., your worker ID) so that the answers will not be traceable back to you. 
         <LineBreak />
-        For the completion of this task, you will be rewarded at an hourly rate of 9 GBP. If your performance falls in the top 25th percentile, you will qualify for a bonus reward.
+        For the completion of this task, you will be rewarded at a fair hourly rate. If your performance falls in the top 25th percentile, you will qualify for a bonus reward.
 
         <LineBreak height="1.6em" />
         By clicking 'I consent' at the bottom of this page and completing the task, you confirm that you have read, understood, and consent to the above information.
