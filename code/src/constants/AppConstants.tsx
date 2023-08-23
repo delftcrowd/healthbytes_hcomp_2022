@@ -78,7 +78,8 @@ export const COLOR_NAMES = [
 ]
 
 // COMPLETION LINKS
-export const COMPLETION_LINK = `https://app.prolific.co/submissions/complete?cc=${process.env.REACT_APP_COMPLETION_CODE || ""}`
+export const COMPLETION_LINK = `https://app.prolific.co/submissions/complete?cc=${process.env.REACT_APP_COMPLETION_CODE || "hbcomplete"}`
+export const REVOKED_RETURN_LINK = `https://app.prolific.co/submissions/complete?cc=${process.env.REACT_APP_CONSENT_REVOKED || "hbrevoked"}`
 
 export const PRE_TASK_SURVEY = process.env.REACT_APP_PRE_TASK_QUALTRICS_URL || 'https://tudelft.fra1.qualtrics.com/jfe/form/SV_2soJQSzaECKxYGi'
 export const POST_TASK_SURVEY = process.env.REACT_APP_POST_TASK_QUALTRICS_URL || 'https://tudelft.fra1.qualtrics.com/jfe/form/SV_bfKqbWRLpgAITbw'
