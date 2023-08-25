@@ -78,8 +78,8 @@ export const COLOR_NAMES = [
 ]
 
 // COMPLETION LINKS
-const COMPLETION_CODE = "CSOWG709"
-const CONSENT_REVOKED_CODE = "CP0BEZFW"
+const COMPLETION_CODE = "C1509HBH"
+const CONSENT_REVOKED_CODE = "CB6XSU8U"
 // export const COMPLETION_LINK = `https://app.prolific.co/submissions/complete?cc=${process.env.REACT_APP_COMPLETION_CODE || "hbcomplete"}`
 export const COMPLETION_LINK = `https://app.prolific.co/submissions/complete?cc=${COMPLETION_CODE || "hbcomplete"}`
 // export const REVOKED_RETURN_LINK = `https://app.prolific.co/submissions/complete?cc=${process.env.REACT_APP_CONSENT_REVOKED || "hbrevoked"}`
