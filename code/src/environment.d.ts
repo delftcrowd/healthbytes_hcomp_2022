@@ -3,6 +3,7 @@ declare global {
     interface ProcessEnv {
       REACT_APP_SERVER_URL?: string,
       REACT_APP_COMPLETION_CODE?: string,
+      REACT_APP_CONSENT_REVOKED?: string,
       REACT_APP_PRE_TASK_QUALTRICS_URL?: string,
       REACT_APP_POST_TASK_QUALTRICS_URL?: string,
     }
