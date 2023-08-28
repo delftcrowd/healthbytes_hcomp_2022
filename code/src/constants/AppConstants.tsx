@@ -78,12 +78,15 @@ export const COLOR_NAMES = [
 ]
 
 // COMPLETION LINKS
-const COMPLETION_CODE = "C1509HBH"
-const CONSENT_REVOKED_CODE = "CB6XSU8U"
-// export const COMPLETION_LINK = `https://app.prolific.co/submissions/complete?cc=${process.env.REACT_APP_COMPLETION_CODE || "hbcomplete"}`
-export const COMPLETION_LINK = `https://app.prolific.co/submissions/complete?cc=${COMPLETION_CODE || "hbcomplete"}`
-// export const REVOKED_RETURN_LINK = `https://app.prolific.co/submissions/complete?cc=${process.env.REACT_APP_CONSENT_REVOKED || "hbrevoked"}`
-export const REVOKED_RETURN_LINK = `https://app.prolific.co/submissions/complete?cc=${CONSENT_REVOKED_CODE || "hbrevoked"}`
+
+export const COMPLETION_LINK = `https://app.prolific.co/submissions/complete?cc=${process.env.REACT_APP_COMPLETION_CODE || "hbcomplete"}`
+export const REVOKED_RETURN_LINK = `https://app.prolific.co/submissions/complete?cc=${process.env.REACT_APP_CONSENT_REVOKED || "hbrevoked"}`
+
+// Workaround if Render's environment change deploy breaks
+// const COMPLETION_CODE = "C1509HBH"
+// const CONSENT_REVOKED_CODE = "CB6XSU8U"
+// export const COMPLETION_LINK = `https://app.prolific.co/submissions/complete?cc=${COMPLETION_CODE || "hbcomplete"}`
+// export const REVOKED_RETURN_LINK = `https://app.prolific.co/submissions/complete?cc=${CONSENT_REVOKED_CODE || "hbrevoked"}`
 
 export const PRE_TASK_SURVEY = process.env.REACT_APP_PRE_TASK_QUALTRICS_URL || 'https://tudelft.fra1.qualtrics.com/jfe/form/SV_2soJQSzaECKxYGi'
 export const POST_TASK_SURVEY = process.env.REACT_APP_POST_TASK_QUALTRICS_URL || 'https://tudelft.fra1.qualtrics.com/jfe/form/SV_bfKqbWRLpgAITbw'
