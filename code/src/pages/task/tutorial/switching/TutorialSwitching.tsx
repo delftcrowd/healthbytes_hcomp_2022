@@ -395,14 +395,13 @@ export const TutorialSwitching = () => {
         const ctx = canvas.getContext("2d")
         if (ctx === null) return
         const { width, height } = canvas.getBoundingClientRect()
-        if (centroidRef.current) {
-          const centroid = centroidRef.current
+        centroidsRef.current.forEach(centroid => {
           const x = centroid.x * width
           const y = centroid.y * height
           ctx.fillStyle = 'yellow'
           ctx.fillRect(x - 4, y - 4, 8, 8)
-        }
-      })
+        })
+    })
 
   }, [movieHealthByteRef.current, birdHealthByteRef.current])
 
